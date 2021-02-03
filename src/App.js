@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { instanceOf } from "prop-types";
+import { withCookies, Cookies } from "react-cookie";
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import OneComp from './Components/OneComp/OneComp';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
+  state = {
+    user: this.props.cookies.get("user") || ""
+  };
+
+  handleCookie = () => {
+    const { cookies } = this.props;
+    cookies.set("user", "gowtham", { path: "/" }); // setting the cookie
+    this.setState({ user: cookies.get("user") });
+    //alert(cookies.get("user"));
+    
+  };
+
+  componentWillMount(){
+    fetch("/testAPI")
+    .then(res=>res.text())
+      .then(res=> this.setState({apiResponse: res}));
+  }
+
+  render() {
+    const { user } = this.state;
+    if(this.state.user !=="")
+     {
+       //alert("no cookie");
+    return (
+     
+       <div className="App">
+      <OneComp data= {this.state.apiResponse}/>
+        </div>
+        )
+    }
+       else{
+        //alert("yes cookie");
+        return( 
+        <div>
+        <button onClick={this.handleCookie}>Set Cookie</button>
+        </div> 
+        );
+       }
+      
+    
+  }
 }
 
-export default App;
+export default withCookies(App);
+
+

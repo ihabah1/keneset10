@@ -1,0 +1,117 @@
+
+body{
+    text-align: center;
+  }
+  
+  #box{
+  width: 500px;
+  height: 600px;
+  border-style: solid;
+  border-color: black;
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  }
+  
+  ul button{
+  position: relative;
+    display:list-item;
+    font-weight: bold;
+    top:20%;    
+    margin-bottom: 30px;
+  }
+  
+  #subjectTxt{
+  position: absolute;
+  right: 35%;
+  }
+  
+  #button1{
+  width:200px;
+  height: 60px;
+  position:absolute;
+  top: 400px;
+  left: 30%;
+  }
+  
+  
+  #img1 
+  {
+  position: absolute; 
+  ;
+  width: 40px;
+  height: 40px;
+  top: 110px; 
+  left: 200px; 
+  }
+  
+  #img2 
+  {
+  position: absolute; 
+  
+  width: 40px;
+  height: 40px;
+  top: 170px; 
+  left: 200px;
+  }
+  
+  #img3 
+  {
+  position: absolute; 
+  
+  width: 40px;
+  height: 40px;
+  top: 220px; 
+  left: 200px; 
+  }
+  
+  #img4 
+  {
+  position: absolute; 
+  ;
+  width: 40px;
+  height: 40x;
+  top: 280px; 
+  left: 200px; 
+  }
+  
+  
+  
+  #txt1 
+  {
+  position: absolute;
+  width: 20px;
+  top: 110px; 
+  left: 160px; 
+  }
+  
+  #txt2
+  {
+  position: absolute;
+  width: 20px;
+  top: 170px; 
+  left: 160px;
+  }
+  
+  #txt3 
+  {
+  position: absolute;
+  width: 20px;
+  top: 220px; 
+  left: 160px;
+  }
+  
+  #txt4 
+  {
+  position: absolute;
+  width: 20px;
+  top: 280px; 
+  left: 160px; 
+  }
+  
+  #one, #two, #three, #four 
+  {
+   
+    left: 330%;
+  }
+  
