@@ -2,7 +2,7 @@
   "name": "gift",
   "version": "0.1.0",
   "private": true,
-  "https://thawing-anchorage-23287.herokuapp.com/",
+  "homepage": "https://thawing-anchorage-23287.herokuapp.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
