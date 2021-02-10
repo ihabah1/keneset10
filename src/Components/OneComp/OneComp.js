@@ -16,22 +16,23 @@ const one = "";
 //oneComp
 
 
- function SendForm() 
+ function SendFormC() 
   {   
     var subject = document.getElementById("subjectlbl").value;
     var Text = document.getElementById("subjectTxt").value;
     var Haver = document.getElementById("drpbx1").value;
-   // alert("subject: "+subject);
-    //alert(Text);
-    alert("subject:"+ subject +" text "+Text+" Haver "+ Haver);
-    //
+    if(subject==="" || Text==="" || Haver==="")
+    {
+      alert("one of the parameter empty")
+    }else{
+    //  const arr = [subject,Text,Haver]; 
+     
+    }
     document.getElementById("subjectlbl").value="";
     document.getElementById("subjectTxt").value="";
      document.getElementById("drpbx1").value="";
-    //alert(texThaver);
-    //alert(myVal);
-  }
 
+  }
 
 
 function OneComp(props) {
@@ -42,9 +43,50 @@ function OneComp(props) {
   let title = "";
 
 
-
+  const requestMetadata = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify()
+  };
   
+async function SendForm() /// Post API
+  {   
+    var subject = document.getElementById("subjectlbl").value;
+    var Text = document.getElementById("subjectTxt").value;
+    var Haver = document.getElementById("drpbx1").value;
+    
+    if(subject==="" || Text==="" || Haver==="")
+    { alert("one of the parameter empty")
+    }else{ 
+      let arr1 = [subject,Text,Haver] ; 
+      const resp = 
+      await  fetch('/pingOne',{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json' },
+      body: JSON.stringify({subject,Text,Haver}  ) })
+    .then((response) => response.text())
+   .then((messages) => {alert(messages);}); }
+    document.getElementById("subjectlbl").value = "";
+    document.getElementById("subjectTxt").value = "";
+    document.getElementById("drpbx1").value = "";
+}
+
+
   (props === "") ? console.log() : Do();
+  function getFieldsValue() {
+    var subject = document.getElementById("subjectlbl").value;
+    var Text = document.getElementById("subjectTxt").value;
+    var Haver = document.getElementById("drpbx1").value;
+    return { subject, Text, Haver };
+  }
+
+  function ResetFields() {
+    
+  }
+
   function Do() {
     let jsn = JSON.stringify(props)
     var items = jsn.split('"');
@@ -53,9 +95,9 @@ function OneComp(props) {
     twoPar = Items1[2];
     threePar = Items1[3];
     fourPar = Items1[4];
-    title = newFunction(title, Items1);
+    title = ResetFields(title, Items1);
+   
   };
-
 
 
   return (
@@ -153,7 +195,6 @@ function OneComp(props) {
           </select>
           <br></br>
           <button onClick={SendForm} id="submitBtn">שלח</button>
-
 
         </div>
       </div>
